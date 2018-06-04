@@ -1,0 +1,91 @@
+<div class="container">
+  <!--<div class="row">-->
+  <!--<div class="col-sm-3" ></div>-->
+  <!--<a href="AddCourse.html" class = "col-sm-6" style="color: white">
+  <button type="button"  class="btn btn-primary col-sm-12" >Add Courses</button></a>-->
+  <!--<div class="col-sm-2" ></div>-->
+  <!--</div>-->
+  <div *ngIf="orderDetails?.length >0 && orderDetails[0].orderId.status == 'pending'">
+    <div class="row">
+      <div class="col-xs-6 col-sm-3">
+        <h4>
+          <button type="button" class="btn btn-primary" (click)="reloadToCart()">Reload TO cart</button>
+        </h4>
+      </div>
+      <div class="col-xs-6 col-sm-3"><h4>&nbsp;</h4></div>
+      <!-- Add clearfix for only the required viewport -->
+      <div class=""></div>
+      <div class="col-xs-6 col-sm-3"><h4>&nbsp;</h4></div>
+      <div class="col-xs-6 col-sm-3">
+        <h4>
+          <button type="button" class="btn btn-danger" (click)="CheckOut()">Cancel</button>
+        </h4>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>orderedProduct id</th>
+      <th>Product Name</th>
+      <th>Product Quantity</th>
+      <th>Product price</th>
+      <th>Order Status</th>
+      <th>Customer Name</th>
+      <th>Customer Phone Numer</th>
+      <th>Mode of Payment</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let orderDetail of orderDetails">
+      <td>{{orderDetail.id}}</td>
+      <td>{{orderDetail.products.name}}</td>
+      <td>{{orderDetail.quantity}}</td>
+      <td>{{orderDetail.products.price}}</td>
+      <td>{{orderDetail.orderId.status}}</td>
+      <td>{{orderDetail.orderId.customer.name}}</td>
+      <td>{{orderDetail.orderId.customer.phoneNumber}}</td>
+      <td>{{orderDetail.orderId.modeOfPayment || 'not-define'}}</td>
+
+
+    </tr>
+    </tbody>
+  </table>
+  <br><br>
+  <div *ngIf="orderDetails?.length >0">
+    <div class="row">
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;">
+        <h4><B>Sub Total</B></h4>
+      </div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>&nbsp;</h4></div>
+      <!-- Add clearfix for only the required viewport -->
+      <div class=""></div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>&nbsp;</h4></div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>{{totalPrice}}</h4></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-3">
+        <h4><B>Tax</B></h4>
+      </div>
+      <div class="col-xs-6 col-sm-3"><h4>&nbsp;</h4></div>
+      <!-- Add clearfix for only the required viewport -->
+      <div class=""></div>
+      <div class="col-xs-6 col-sm-3"><h4>&nbsp;</h4></div>
+      <div class="col-xs-6 col-sm-3"><h4>$10&nbsp;</h4></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;">
+        <h4><B>Total</B></h4>
+      </div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>&nbsp;</h4></div>
+      <!-- Add clearfix for only the required viewport -->
+      <div class=""></div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>&nbsp;</h4></div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>{{totalPrice +10}}&nbsp;</h4></div>
+    </div>
+
+    <br>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <!--<div class="row">-->
+  <!--<div class="col-sm-3" ></div>-->
+  <!--<a href="AddCourse.html" class = "col-sm-6" style="color: white"><button type="button"  class="btn btn-primary col-sm-12" >Add Courses</button></a>-->
+  <!--<div class="col-sm-2" ></div>-->
+  <!--</div>-->
+  <br><br>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Start Cash</th>
+      <th>End Cash</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cashDrawer of cashDrawers">
+
+      <td>{{cashDrawer.startTime | date:'dd-MM-yyyy hh:ss'}}</td>
+      <td>{{cashDrawer.endTime | date:'dd-MM-yyyy hh:ss' }}</td>
+      <td>{{cashDrawer.startCash}}</td>
+      <td>{{cashDrawer.endCash }}</td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>

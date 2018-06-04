@@ -1,0 +1,50 @@
+<div class="container">
+  <h3>Search Product</h3>
+  <form class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search"
+             [(ngModel)]="filter" name="first" (input)="getProductByFilter()">
+    </div>
+  </form>
+
+  <h3>{{customerName || 'No one '}} is selected</h3>
+  <br><br>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Product Id</th>
+      <th>Product Name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Stock</th>
+      <th>Add To Cart</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.stock}}</td>
+      <!--<td>{{course.id}}</td>-->
+      <td *ngIf="product.stock > 0">
+        <button type="button" class="btn btn-primary" (click)="addToCart(product.id)">Add To Cart</button>
+      </td>
+      <td *ngIf="product.stock <1">
+        <button type="button" class="btn btn-primary" disabled>Add To Cart</button>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <!--<h1>All Products</h1>-->
+    <!--<ul *ngFor="let product of products">-->
+    <!--<li>{{product.name}}</li>-->
+    <!--<ul>Description : {{product.description}}</ul>-->
+    <!--<ul>price :{{product.price}}</ul>-->
+    <!--<ul>Stock :{{product.stock}}</ul>-->
+    <!--<ul> Id :{{product.id}}</ul>-->
+    <!--</ul>-->
+

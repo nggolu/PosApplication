@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="navbar navbar-expand-sm bg-light">
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+      <a class="navbar-nav" href="/" class="nav-link"><b>Point of Sale Application</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Employee
+        : {{name || 'none'}}</a>
+
+    </div>
+    <ul class="nav navbar-nav" *ngIf="token !=null">
+
+      <li class="nav-item"><a href="/customer" class="nav-link">Select Customer</a></li>
+      <li class="nav-item"><a href="/product" class="nav-link">All Products </a></li>
+      <li class="nav-item"><a href="/order" class="nav-link">Order</a></li>
+      <li class="nav-item"><a href="/saveOrder" class="nav-link">Save Order</a></li>
+      <li class="nav-item"><a href="/cashDrawer" class="nav-link">Cash Drawer</a></li>
+      <li class="nav-item"><a href="/reports" class="nav-link">Reports</a></li>
+      <li class="nav-item"><a href="/cart" class="nav-link">Cart</a></li>
+
+      <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+
+    </ul>
+    <ul class="nav navbar-nav" *ngIf="token ==null">
+      <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+    </ul>
+  </div>
+</nav>
+<br><br>
+<router-outlet></router-outlet>

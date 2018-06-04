@@ -1,0 +1,100 @@
+<div class="container">
+  <h3>{{customerName}} is selected</h3>
+
+  <!-- <app-checkout [cardData]="cartProducts" ></app-checkout>-->
+  <br><br>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>SubTotal</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cartproduct of cartProducts">
+      <td>{{cartproduct.products.name}}</td>
+      <td>
+
+        {{cartproduct.quantity}}
+        <!--<input type="number" min="1" value="{{cartproduct.quantity}}" name ="quantity"   max="{{cartproduct.products.stock}}" (onkeydown)="changeQuantity($event.path[0].value,cartproduct.id,cartproduct.products.stock)" />-->
+
+      </td>
+      <td>{{cartproduct.products.price}}</td>
+
+      <td>{{cartproduct.products.description}}</td>
+      <!--<td>{{course.id}}</td>-->
+      <td>{{cartproduct.products.price * cartproduct.quantity}}</td>
+
+
+    </tr>
+    </tbody>
+  </table>
+  <br><br>
+  <div *ngIf="cartProducts?.length >0">
+    <div class="row">
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;">
+        <h4><B>Sub Total</B></h4>
+      </div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>&nbsp;</h4></div>
+      <!-- Add clearfix for only the required viewport -->
+      <div class=""></div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>&nbsp;</h4></div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>{{totalPrice}}</h4></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-3">
+        <h4><B>Tax</B></h4>
+      </div>
+      <div class="col-xs-6 col-sm-3"><h4>&nbsp;</h4></div>
+      <!-- Add clearfix for only the required viewport -->
+      <div class=""></div>
+      <div class="col-xs-6 col-sm-3"><h4>&nbsp;</h4></div>
+      <div class="col-xs-6 col-sm-3"><h4>$10&nbsp;</h4></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;">
+        <h4><B>Total</B></h4>
+      </div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>&nbsp;</h4></div>
+      <!-- Add clearfix for only the required viewport -->
+      <div class=""></div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>&nbsp;</h4></div>
+      <div class="col-xs-6 col-sm-3" style="background-color:lavender;"><h4>{{totalPrice +10}}&nbsp;</h4></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-6 col-sm-3">
+        <h4><B>
+          <button type="button" class="btn btn-primary" (click)="saveOrder()">Save Order</button>
+        </B></h4>
+      </div>
+      <div class="col-xs-6 col-sm-2"><h4>&nbsp;</h4></div>
+      <!-- Add clearfix for only the required viewport -->
+      <div class=""></div>
+      <div class="col-xs-6 col-sm-3"><h4>&nbsp;</h4></div>
+      <div class="col-xs-6 col-sm-4">
+        <h4>
+          <form class="form-group">
+
+            <label class="radio-inline">
+              <input type="radio" name="modeOfPayment" (click)="selectModeOfPayemnt($event)" value="cart">Cart
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="modeOfPayment" value="cash" (click)="selectModeOfPayemnt($event)">Cash
+            </label>
+            &nbsp;&nbsp;<button (click)="placeOrder()" class="btn btn-primary" >Place Order</button>
+          </form>
+        </h4>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
